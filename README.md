@@ -9,8 +9,8 @@ package thing
 
 import (
     "github.com/rs/zerolog"
-	"github.com/rs/zerolog/log"
-	"go.mdl.wtf/zhw"
+    "github.com/rs/zerolog/log"
+    "go.mdl.wtf/zhw"
 )
 
 func main() {
@@ -18,16 +18,16 @@ func main() {
     if err != nil {
         panic(err)
     }
-	w, err := zhw.NewWriter(zhw.WithURL(u))
+    w, err := zhw.NewWriter(zhw.WithURL(u))
     if err != nil {
         panic(err)
     }
     defer w.Close()
     log.Logger = log.Output(w)
-	logger := log.With().Str("str", "string").Int("int", 15).Uint("uint", 15).Strs("slice", []string{"one", "two"}).Logger()
-	logger.Info().Msg("message 1")
-	logger.Info().Msg("message 2")
-	logger.Err(fmt.Errorf("test error")).Msg("an error")
+    logger := log.With().Str("str", "string").Int("int", 15).Uint("uint", 15).Strs("slice", []string{"one", "two"}).Logger()
+    logger.Info().Msg("message 1")
+    logger.Info().Msg("message 2")
+    logger.Err(fmt.Errorf("test error")).Msg("an error")
 }
 ```
 
@@ -77,10 +77,10 @@ func main() {
 
 ## Configuration
 
-| Option  |     Type      |             Default             |
-| :------ | :-----------: | :-----------------------------: |
-| URL     |  `*url.URL`   |        None, _required_         |
-| Method  |   `string`    |             `POST`              |
+| Option  |     Type      |                         Default |
+| :------ | :-----------: | ------------------------------: |
+| URL     |  `*url.URL`   |                None, _required_ |
+| Method  |   `string`    |                          `POST` |
 | Headers | `http.Header` | `content-type=application/json` |
 
 ### Example
